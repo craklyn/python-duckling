@@ -46,7 +46,8 @@ class DucklingWrapper(object):
             Dim.EMAIL:          self._parse_basic_info,
             Dim.URL:            self._parse_basic_info,
             Dim.PHONENUMBER:    self._parse_basic_info,
-            Dim.TIMEZONE:       self._parse_basic_info
+            Dim.TIMEZONE:       self._parse_basic_info,
+            Dim.LEVEN-UNIT:     self._parse_basic_info
         }
 
     def _parse(self, input_str, dim=None, reference_time=''):

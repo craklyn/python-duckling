@@ -179,11 +179,13 @@ class Duckling(object):
             u'minute': self._parse_int,
             u'hour': self._parse_int,
             u'day': self._parse_int,
+            u'week': self._parse_int,
             u'month': self._parse_int,
             u'year': self._parse_int,
         }
         _functions_with_dim = {
             u'value':   self._parse_value,
+            u'product':   self._parse_value,
             u'values':   self._parse_list,
             u'normalized':  self._parse_dict,
             u'unit': self._parse_keyword,
@@ -207,8 +209,11 @@ class Duckling(object):
         return result
 
     def _parse_float(self, java_number):
-        return float(java_number.toString())
-
+        if(hasattr(java_number, "toString")):
+            return float(java_number.toString())        
+        else:
+            return "<<Absurdly large number>>"
+        
     def _parse_int(self, java_number):
         return int(java_number.toString())
 
@@ -225,7 +230,10 @@ class Duckling(object):
             Dim.EMAIL:          self._parse_string,
             Dim.URL:            self._parse_string,
             Dim.PHONENUMBER:    self._parse_string,
-            Dim.TIMEZONE:       self._parse_string
+            Dim.TIMEZONE:       self._parse_string,
+            Dim.LEVENUNIT:      self._parse_string,
+            Dim.LEVENPRODUCT:   self._parse_string,
+            Dim.QUANTITY:       self._parse_float
         }
         if not dim:
             return self._parse_string(java_value)

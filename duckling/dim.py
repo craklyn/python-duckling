@@ -15,3 +15,6 @@ class Dim(object):
     URL = u'url'
     PHONENUMBER = u'phone-number'
     TIMEZONE = u'timezone'
+    LEVENUNIT = u'leven-unit'
+    LEVENPRODUCT = u'leven-product'
+    QUANTITY = u'quantity'
